@@ -25,6 +25,7 @@ set(HEADERS
     stdio.h
     time_WC9000.h
     ts_string.h
+    io.h
     sys/stat.h
     sys/timeb.h
 )
@@ -38,6 +39,7 @@ add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 # install(FILES ${HEADERS}
 #     DESTINATION include COMPONENT dev_headers)
 
+install(DIRECTORY sys DESTINATION include/sys)
 install(TARGETS wince-crt
     ARCHIVE DESTINATION lib COMPONENT libraries
     PUBLIC_HEADER DESTINATION include COMPONENT dev)
