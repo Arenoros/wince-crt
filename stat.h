@@ -79,7 +79,7 @@ struct stat
         time_t                  st_mtime;
         time_t                  st_ctime;
 };
-
+#define _stati64 stat
 
 int __cdecl stat(const char *filename, struct stat *buf);
 
