@@ -1,21 +1,17 @@
-cmake_minimum_required(2.8)
+cmake_minimum_required(VERSION 2.8.12)
 
 project(wince-crt C)
 
-set(SOURCES 
-    ChildData.c
+set(SOURCES
     crt.c
-    env.c
+    env.cpp
     locale.c
-    pipe.c
-    redir.c
+    pipe.cpp
     stat.c
     time.c
-    ts_string.c
 )
 set(HEADERS 
     args.h
-    ChildData.h
     conio.h
     crt.h
     errno.h
@@ -36,6 +32,8 @@ set(HEADERS
 add_library(wince-crt STATIC ${SOURCES})
 set_target_properties(wince-crt
         PROPERTIES PUBLIC_HEADER "${HEADERS}")
+
+add_definitions(-D_CRT_SECURE_NO_WARNINGS)
         
 # install(FILES ${HEADERS}
 #     DESTINATION include COMPONENT dev_headers)

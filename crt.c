@@ -17,8 +17,7 @@
 #include <windows.h>
 #include <time.h>
 
-#include <crt.h>
-
+#include "crt.h"
 #include "signal.h"
 
 int strcoll(const char *s1,const char *s2)
@@ -106,7 +105,7 @@ DWORD GetCurrentDirectory(DWORD  nBufferLength, LPTSTR lpBuffer)
 	TCHAR buffer[MAX_PATH];
 	TCHAR  *lCharEntryPtr ;
     GetModuleFileName( NULL, buffer, MAX_PATH );
-	lCharEntryPtr = strrchr(buffer,'\\');
+	lCharEntryPtr = _tcsrchr(buffer,'\\');
 	if(lCharEntryPtr!=NULL)
 	{
      len = lCharEntryPtr - buffer;
@@ -158,8 +157,8 @@ static char _tmpnam[MAX_PATH];
 
 char *tmpnam(char *s)
 {
-	wchar_t tmp[MAX_PATH+1];
-	wchar_t tfn[MAX_PATH+1];
+	TCHAR tmp[MAX_PATH+1];
+	TCHAR tfn[MAX_PATH+1];
 	DWORD len;
 
 	len=GetTempPath(MAX_PATH,tmp);
@@ -173,7 +172,7 @@ char *tmpnam(char *s)
 		return NULL;
 	if(!s) s=_tmpnam;
 
-    len = wcslen(tfn);
+    len = _tcslen(tfn);
     WideCharToMultiByte(CP_UTF8, 0, tfn, len + 1, s, MAX_PATH, NULL, NULL);
     return s;
 };

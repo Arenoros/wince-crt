@@ -27,7 +27,7 @@
 extern "C" {
 #endif
 
-
+#include <windows.h>
 #include <stdlib.h>             /* time_t */
 
 
@@ -85,28 +85,8 @@ struct stat
 }
 #endif
 
-#ifndef MPLCSHARE_API
-	#if defined (WIN32) || defined (WINCE)
-#		ifdef MPLCSHARE_EXPORTS
-#			define MPLCSHARE_API __declspec(dllexport)
-#		else
-#			define MPLCSHARE_API __declspec(dllimport)
-#		endif
-#	else
-#		define MPLCSHARE_API 
-#	endif
-#endif
-
-MPLCSHARE_API int stat_wce(const TCHAR *filename, struct stat *buf);
-//MPLCSHARE_API int stat2(const char *filename, struct stat *buf);
- 
-//#	ifdef MPLCSHARE_EXPORTS
-//__declspec(dllexport)  int stat(const char *filename, struct stat *buf);
-//#else 
-// __declspec(dllimport) int stat(const char *filename, struct stat *buf);
-//#endif
-//__declspec(dllexport)  int stat(const char *filename, struct stat *buf);
-
-
+int stat_wce(
+        const TCHAR *filename,
+        struct stat *buf);
 
 #endif // __wcecompat__SYS__STAT_H__

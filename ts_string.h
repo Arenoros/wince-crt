@@ -47,7 +47,6 @@ void unicode2ascii(const WCHAR* unicode, char* ascii);
 void ascii2unicode(const char* ascii, WCHAR* unicode, int maxChars);
 void unicode2ascii(const WCHAR* unicode, char* ascii, int maxChars);
 
-
 //
 // ascii/unicode typesafe versions of strlen
 //
@@ -57,7 +56,7 @@ inline size_t ts_strlen(const char* str)
         return strlen(str);
 }
 
-inline size_t ts_strlen(const WCHAR* str)
+inline size_t ts_strlen(const wchar_t* str)
 {
         return wcslen(str);
 }
@@ -73,7 +72,7 @@ inline size_t ts_strsize(const char* str)
         return strlen(str);
 }
 
-inline size_t ts_strsize(const WCHAR* str)
+inline size_t ts_strsize(const wchar_t* str)
 {
         return wcslen(str)*2;
 }

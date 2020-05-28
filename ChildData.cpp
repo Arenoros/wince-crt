@@ -25,7 +25,7 @@
 #include <stdio.h>
 #include <tchar.h>
 #include "ts_string.h"
-#include <crt.h>
+#include "crt.h"
 
 
 extern char** _environ;
@@ -458,10 +458,10 @@ bool ChildData::decode(void* childData)//, int childDataSize)
                 // pipe/file name
                 if (filenamePresent)
                 {
-                        int strLen = ts_strlen((WCHAR*)p);
+                        int strLen = ts_strlen((const WCHAR*)p);
                         if ((strLen+1)*2 > (int)size)
                                 goto cleanup;
-                        redirArgs[i].filename = _tcsdup((WCHAR*)p);
+                        redirArgs[i].filename = _tcsdup((const WCHAR*)p);
                         p += (strLen + 1)*2;
                         size -= (strLen + 1)*2;
                 }

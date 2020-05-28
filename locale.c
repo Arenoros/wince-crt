@@ -17,7 +17,7 @@
 #include <windows.h>
 #include <locale.h>
 
-#include <crt.h>
+#include "crt.h"
 
 #if !defined (PLC_WINPAC_9000)
 static struct lconv _localeconv={0};

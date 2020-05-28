@@ -21,8 +21,8 @@
 
 #include <stdio.h>
 #include <errno.h>
+#include <windows.h>
 #include "stat_wce.h"
-#include "ts_string.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,12 +37,13 @@ time_t w32_filetime_to_time_t(FILETIME* ft);
 
 int stat_wce(const TCHAR* filename, struct stat* st)
 {
+	WIN32_FILE_ATTRIBUTE_DATA       fad;
 	if (filename == NULL || st == NULL)
 	{
 //      errno = EINVAL;
 		return -1;
 	}
-	WIN32_FILE_ATTRIBUTE_DATA       fad;
+
 	if (!GetFileAttributesEx(filename, GetFileExInfoStandard, (LPVOID)&fad))
 	{
 //      errno = ENOENT;
