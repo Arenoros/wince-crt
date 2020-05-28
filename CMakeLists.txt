@@ -39,7 +39,7 @@ add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 # install(FILES ${HEADERS}
 #     DESTINATION include COMPONENT dev_headers)
 
-install(DIRECTORY sys DESTINATION include/sys)
+install(DIRECTORY sys DESTINATION include)
 install(TARGETS wince-crt
     ARCHIVE DESTINATION lib COMPONENT libraries
     PUBLIC_HEADER DESTINATION include COMPONENT dev)
